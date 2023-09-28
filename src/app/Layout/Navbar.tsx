@@ -13,9 +13,7 @@ import { redirect } from 'next/navigation';
 
 const Navbar: React.FC = async () => {
   const session = await getServerSession(options);
-  if (!session) {
-    redirect('api/auth/signin?callbackUrl=/');
-  }
+
   return (
     <nav className='bg-white dark:bg-zinc-900 rounded-md sticky top-0 flex items-center justify-between p-3 z-50'>
       <div className='flex items-center space-x-6 ml-4'>
