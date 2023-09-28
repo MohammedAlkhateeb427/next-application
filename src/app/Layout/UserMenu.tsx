@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import type { User } from 'next-auth';
 import { BsBoxArrowRight } from 'react-icons/bs';
-
+import { Button } from '../components';
 type Props = {
   user: User;
 };
@@ -44,6 +44,13 @@ const UserMenu = ({ user }: Props) => {
                 <BsBoxArrowRight className='ml-3 text-xl ' />
               </div>
             </div>
+          </Link>
+        )}
+        {!user?.image && (
+          <Link href='/api/auth/signout'>
+            <button className='block px-4 py-2 '>
+              <BsBoxArrowRight />
+            </button>
           </Link>
         )}
       </div>
