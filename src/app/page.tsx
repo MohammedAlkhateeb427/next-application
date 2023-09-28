@@ -27,11 +27,11 @@ const Home = async () => {
       <p className='md:text-start mt-10 sm:text-center lg:text-start font-semibold'>
         Select Categories
       </p>
-      <div className=' flex flex-row  justify-center gap-8 mt-4'>
+      <div className=' flex flex-row  justify-center gap-8 mt-4 flex-wrap'>
         {resCategories.map((item) => {
           return (
             <>
-              <div className='w-[85px]  border-teal-950 overflow-hidden shadow-2xl rounded-lg hover:shadow-3xl transition duration-300 transform hover:-translate-y-2 dark:shadow-dark '>
+              <div className='w-[85px] border-teal-950 overflow-hidden shadow-2xl rounded-lg hover:shadow-3xl transition duration-300 transform hover:-translate-y-2 dark:shadow-dark '>
                 <Link href={`/categories/${item}`}>
                   <div className=' flex justify-center mt-3'>
                     {item === "men's clothing" ? (
@@ -44,8 +44,10 @@ const Home = async () => {
                       <FaMobile className='text-[30px]' />
                     )}
                   </div>
-                  <div className=' text-center mt-3'>
-                    <p className='font-semibold text-md  text-center'>{item}</p>
+                  <div className=' text-center mt-3 '>
+                    <p className='font-semibold text-sm   text-center'>
+                      {item}
+                    </p>
                   </div>
                 </Link>
               </div>
