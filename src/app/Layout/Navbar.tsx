@@ -9,7 +9,6 @@ import { LoginButton } from '../components';
 import Logo from '../../../public/images/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
 const Navbar: React.FC = async () => {
   const session = await getServerSession(options);
