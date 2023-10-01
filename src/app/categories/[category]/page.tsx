@@ -41,7 +41,7 @@ const CategoryDetailes: React.FC<CategoryDetailsProps> = ({ params }) => {
       `https://fakestoreapi.com/products/category/${categoryId}`
     );
     setData((old) => ({ ...old, productData: res }));
-    setControl((old) => ({ ...old, Loading: !old.Loading }));
+    setControl((old) => ({ ...old, Loading: false }));
   };
   useEffect(() => {
     fetchProductData();
@@ -89,10 +89,11 @@ const CategoryDetailes: React.FC<CategoryDetailsProps> = ({ params }) => {
           .map((item, index) => {
             return <Card product={item} key={index} />;
           })}
-        {control.Loading &&
-          Array.from({ length: 4 }).map((_, index) => (
-            <CardSkeletonLoader key={index} />
-          ))}
+        {control.Loading
+          ? Array.from({ length: 4 }).map((_, index) => (
+              <CardSkeletonLoader key={index} />
+            ))
+          : ''}
       </div>
     </>
   );

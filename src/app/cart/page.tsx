@@ -18,19 +18,9 @@ const CartPage: React.FC = () => {
       total: cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0),
     }));
   }, [cart]);
-  const isSmallScreen = window.innerWidth < 576;
-  const isTabletScreen = window.innerWidth < 860;
   return (
     <>
-      <div
-        className={`${
-          isSmallScreen
-            ? 'sm:hidden flex flex-col rounded-lg mt-4'
-            : isTabletScreen
-            ? 'hidden sm:block tablet:hidden  flex flex-col bg-zinc-100 dark:bg-zinc-900 rounded-lg mt-4'
-            : 'hidden md:block flex flex-col bg-zinc-100 dark:bg-zinc-900 rounded-lg mt-4'
-        }  `}
-      >
+      <div className='hidden md:block flex flex-col bg-zinc-100 dark:bg-zinc-900 rounded-lg mt-4'>
         {cart.map((product) => {
           return (
             cart.length > 0 && (
@@ -76,12 +66,120 @@ const CartPage: React.FC = () => {
             )
           );
         })}
+
         {cart.length > 0 && (
           <div className='text-center mt-5 rounded shadow-xl font-semibold'>
             <h1 className='mb-2'>Total is : ${control.total.toFixed(2)}</h1>
           </div>
         )}
       </div>
+      <div className='sm:hidden tablet:hidden flex flex-col 0 rounded-lg mt-4'>
+        {cart.map((product) => {
+          return (
+            cart.length > 0 && (
+              <div key={product.id} className='flex items-center mt-4'>
+                <Image
+                  unoptimized
+                  width={0}
+                  height={0}
+                  priority={true}
+                  src={product.image}
+                  alt='Product Image'
+                  className='h-16 w-24 ml-10'
+                />
+                <div className='flex flex-col flex-grow  text-center md:text-start ml-5'>
+                  <h2 className='text-sm font-semibold '>{product.title}</h2>
+                  <h2 className='text-sm font-semibold '>{product.category}</h2>
+                  <h2 className='text-sm font-semibold '>${product.price}</h2>
+                </div>
+                <div className='flex items-center border w-22 h-10 rounded-lg ml-3'>
+                  <Button
+                    onClick={() =>
+                      updateQuantity(product.id, product.quantity - 1)
+                    }
+                    className='mr-1 px-2 py-1'
+                    label='-'
+                  />
+                  <Button className='mr-1 px-2 py-1' label={product.quantity} />
+                  <Button
+                    onClick={() =>
+                      updateQuantity(product.id, product.quantity + 1)
+                    }
+                    className='mr-1 px-2 py-1'
+                    label='+'
+                  />
+                </div>
+                <div className='flex items-center text-center text-red-500 ml-3 '>
+                  <Button
+                    icon={BsFillTrashFill}
+                    onClick={() => removeFromCart(product.id)}
+                  />
+                </div>
+              </div>
+            )
+          );
+        })}
+
+        {cart.length > 0 && (
+          <div className='text-center mt-5 rounded shadow-xl font-semibold'>
+            <h1 className='mb-2'>Total is : ${control.total.toFixed(2)}</h1>
+          </div>
+        )}
+      </div>
+      <div className='hidden sm:block tablet:hidden bg-zinc-100 dark:bg-zinc-900 flex flex-col 0 rounded-lg mt-4'>
+        {cart.map((product) => {
+          return (
+            cart.length > 0 && (
+              <div key={product.id} className='flex items-center mt-4'>
+                <Image
+                  unoptimized
+                  width={0}
+                  height={0}
+                  priority={true}
+                  src={product.image}
+                  alt='Product Image'
+                  className='h-16 w-24 ml-10'
+                />
+                <div className='flex flex-col flex-grow  text-center md:text-start ml-5'>
+                  <h2 className='text-sm font-semibold '>{product.title}</h2>
+                  <h2 className='text-sm font-semibold '>{product.category}</h2>
+                  <h2 className='text-sm font-semibold '>${product.price}</h2>
+                </div>
+                <div className='flex items-center border w-22 h-10 rounded-lg ml-3'>
+                  <Button
+                    onClick={() =>
+                      updateQuantity(product.id, product.quantity - 1)
+                    }
+                    className='mr-1 px-2 py-1'
+                    label='-'
+                  />
+                  <Button className='mr-1 px-2 py-1' label={product.quantity} />
+                  <Button
+                    onClick={() =>
+                      updateQuantity(product.id, product.quantity + 1)
+                    }
+                    className='mr-1 px-2 py-1'
+                    label='+'
+                  />
+                </div>
+                <div className='flex items-center text-center text-red-500 ml-3 '>
+                  <Button
+                    icon={BsFillTrashFill}
+                    onClick={() => removeFromCart(product.id)}
+                  />
+                </div>
+              </div>
+            )
+          );
+        })}
+
+        {cart.length > 0 && (
+          <div className='text-center mt-5 rounded shadow-xl font-semibold'>
+            <h1 className='mb-2'>Total is : ${control.total.toFixed(2)}</h1>
+          </div>
+        )}
+      </div>
+
       <div className='flex justify-center'>
         <Link href={'/checkout'}>
           {cart.length > 0 && (

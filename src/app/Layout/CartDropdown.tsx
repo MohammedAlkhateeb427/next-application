@@ -14,21 +14,21 @@ const CartDropdown = () => {
   const { cart, removeFromCart } = useCart();
 
   return (
-    <div className='relative inline-block '>
+    <div className='relative inline-block text-center'>
       <Button
-        className='pt-6'
+        className='pt-5'
         onClick={() =>
           setControl((old) => ({ ...old, isCartOpen: !old.isCartOpen }))
         }
       >
-        <BsFillCartFill className='absolute text-xl ml-1 ' />
+        <BsFillCartFill className='absolute text-xl ml-2 ' />
       </Button>
       <Button
         onClick={() =>
           setControl((old) => ({ ...old, isCartOpen: !old.isCartOpen }))
         }
       >
-        <span className='ml-6 bg-red-500 text-white rounded-full px-2 py-1 text-xs mt-1'>
+        <span className='ml-7 bg-red-500 text-white rounded-full px-2 py-1 text-xs '>
           {cart.length}
         </span>
       </Button>
