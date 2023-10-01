@@ -2,10 +2,9 @@
 
 import { useState } from 'react';
 import { useCart } from '../context/CartProvider';
-import Button from '../components/Button';
-import { BsFillTrashFill } from 'react-icons/bs';
 import Link from 'next/link';
-import { BsFillCartFill } from 'react-icons/bs';
+import Button from '../components/Button';
+import { BsFillTrashFill, BsFillCartFill } from 'react-icons/bs';
 
 const CartDropdown = () => {
   const [control, setControl] = useState({
