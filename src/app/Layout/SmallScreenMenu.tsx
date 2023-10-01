@@ -34,12 +34,7 @@ export const SmallScreenMenu = ({
             <div className='border-b mt-2 '></div>
             <div className='flex items-center justify-center rounded ml-5 mt-2'>
               <p className=' px-2 px-2 text-sm font-semibold'>Check Cart</p>
-              <div className='relative inline-block  '>
-                <button className=' focus:outline-none '>
-                  <BsFillCartFill className='text-xl' />
-                </button>
-                <CartDropdown />
-              </div>
+              <CartDropdown />
             </div>
           </div>
         )}

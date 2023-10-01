@@ -5,6 +5,7 @@ import { useCart } from '../context/CartProvider';
 import Button from '../components/Button';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Link from 'next/link';
+import { BsFillCartFill } from 'react-icons/bs';
 
 const CartDropdown = () => {
   const [control, setControl] = useState({
@@ -14,13 +15,21 @@ const CartDropdown = () => {
   const { cart, removeFromCart } = useCart();
 
   return (
-    <div className='relative inline-block text-left'>
+    <div className='relative inline-block '>
+      <Button
+        className='pt-6'
+        onClick={() =>
+          setControl((old) => ({ ...old, isCartOpen: !old.isCartOpen }))
+        }
+      >
+        <BsFillCartFill className='absolute text-xl ml-1 ' />
+      </Button>
       <Button
         onClick={() =>
           setControl((old) => ({ ...old, isCartOpen: !old.isCartOpen }))
         }
       >
-        <span className='ml-1 bg-red-500 text-white rounded-full px-2 py-1 text-xs'>
+        <span className='ml-6 bg-red-500 text-white rounded-full px-2 py-1 text-xs mt-1'>
           {cart.length}
         </span>
       </Button>

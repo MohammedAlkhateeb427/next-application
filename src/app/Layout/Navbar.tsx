@@ -14,7 +14,7 @@ const Navbar: React.FC = async () => {
   const session = await getServerSession(options);
 
   return (
-    <nav className='bg-white dark:bg-zinc-900 rounded-md sticky top-0 flex items-center justify-between p-3 z-50'>
+    <nav className='bg-white dark:bg-zinc-900 rounded-md sticky top-0 flex items-center justify-between p-2 z-50'>
       <div className='flex items-center space-x-6 ml-4'>
         <Link className='font-bold text-md' href='/'>
           <Image
@@ -38,12 +38,7 @@ const Navbar: React.FC = async () => {
 
       <div className='hidden md:block'>
         <div className='flex items-center space-x-4 '>
-          <div className='relative inline-block text-left '>
-            <button className=' focus:outline-none '>
-              <BsFillCartFill className='text-xl' />
-            </button>
-            <CartDropdown />
-          </div>
+          <CartDropdown />
           <ThemeMenu />
           {session ? <UserMenu user={session?.user} /> : <LoginButton />}
         </div>

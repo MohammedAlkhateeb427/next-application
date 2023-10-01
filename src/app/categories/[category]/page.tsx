@@ -23,7 +23,7 @@ const CategoryDetailes: React.FC<CategoryDetailsProps> = ({ params }) => {
   const [data, setData] = useState<{ productData: Data[]; sortType: any[] }>({
     productData: [],
     sortType: [
-      { key: 0, value: 'automatic' },
+      { key: 0, value: 'Auto' },
       { key: 1, value: 'Price from low to high' },
       { key: 2, value: 'Price from high to low' },
     ],
@@ -63,7 +63,7 @@ const CategoryDetailes: React.FC<CategoryDetailsProps> = ({ params }) => {
           <Input
             icon={FaSearch}
             classNameIcon='text-yellow-500'
-            placeholder='Search for products...'
+            placeholder='Search...'
             onChange={(search) => {
               setControl((old) => ({ ...old, search }));
             }}

@@ -5,7 +5,7 @@ import { useCart } from '../context/CartProvider';
 import { Button } from '../components';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Link from 'next/link';
-
+import Image from 'next/image';
 const CartPage: React.FC = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
   const [control, setControl] = useState({
@@ -18,9 +18,19 @@ const CartPage: React.FC = () => {
       total: cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0),
     }));
   }, [cart]);
+  const isSmallScreen = window.innerWidth < 576;
+  const isTabletScreen = window.innerWidth < 860;
   return (
     <>
-      <div className='flex flex-col bg-zinc-100 dark:bg-zinc-900 rounded-lg mt-4'>
+      <div
+        className={`${
+          isSmallScreen
+            ? 'sm:hidden flex flex-col rounded-lg mt-4'
+            : isTabletScreen
+            ? 'hidden sm:block tablet:hidden  flex flex-col bg-zinc-100 dark:bg-zinc-900 rounded-lg mt-4'
+            : 'hidden md:block flex flex-col bg-zinc-100 dark:bg-zinc-900 rounded-lg mt-4'
+        }  `}
+      >
         {cart.map((product) => {
           return (
             cart.length > 0 && (
@@ -35,7 +45,7 @@ const CartPage: React.FC = () => {
                   <h2 className='text-sm font-semibold '>{product.category}</h2>
                   <h2 className='text-sm font-semibold '>${product.price}</h2>
                 </div>
-                <div className='flex items-center border w-22 h-10 rounded-lg md:mr-4'>
+                <div className='flex items-center border w-22 h-10 rounded-lg ml-3'>
                   <Button
                     onClick={() =>
                       updateQuantity(product.id, product.quantity - 1)
@@ -52,7 +62,7 @@ const CartPage: React.FC = () => {
                     label='+'
                   />
                 </div>
-                <div className='flex items-center text-center text-red-500 md:mr-4 sm:pl-2'>
+                <div className='flex items-center text-center text-red-500 ml-3 '>
                   <Button
                     icon={BsFillTrashFill}
                     onClick={() => removeFromCart(product.id)}
