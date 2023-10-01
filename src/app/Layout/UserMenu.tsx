@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import type { User } from 'next-auth';
 import { BsBoxArrowRight } from 'react-icons/bs';
-import { Button } from '../components';
+import Image from 'next/image';
 type Props = {
   user: User;
 };
@@ -26,7 +26,11 @@ const UserMenu = ({ user }: Props) => {
 
       <div className='relative group inline-block left-2 cursor-pointer'>
         {user?.image && (
-          <img
+          <Image
+            unoptimized
+            width={0}
+            height={0}
+            priority={true}
             className='h-10 w-10 rounded-full hover:text-gray-300 focus:outline-none'
             src={user?.image}
             onClick={() =>

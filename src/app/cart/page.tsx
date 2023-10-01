@@ -35,7 +35,11 @@ const CartPage: React.FC = () => {
           return (
             cart.length > 0 && (
               <div key={product.id} className='flex items-center mt-4'>
-                <img
+                <Image
+                  unoptimized
+                  width={0}
+                  height={0}
+                  priority={true}
                   src={product.image}
                   alt='Product Image'
                   className='h-16 w-24 ml-10'

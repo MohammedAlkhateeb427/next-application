@@ -5,6 +5,7 @@ import Button from './Button';
 import { BsFillCartFill } from 'react-icons/bs';
 import { useCart } from '../context/CartProvider';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type Props = {
   product: any;
@@ -17,7 +18,11 @@ const ProductCard = ({ product }: Props) => {
     <>
       <div className='w-72 border-teal-950 max-w-xs mx-auto overflow-hidden shadow-2xl rounded-lg hover:shadow-3xl transition duration-300 transform hover:-translate-y-2 dark:shadow-dark '>
         <Link href={`/product/${product.id}`}>
-          <img
+          <Image
+            unoptimized
+            width={0}
+            height={0}
+            priority={true}
             src={product.image}
             alt={product.title}
             className='w-full h-48 object-cover'

@@ -23,7 +23,15 @@ const CarouselPage: React.FC<Imagees> = ({ images }) => {
       >
         {images.map((image, index) => (
           <div key={index} className='carousel-item '>
-            <img src={image} alt={`Image ${index}`} className='rounded-3xl' />
+            <Image
+              unoptimized
+              src={image}
+              alt={`Image ${index}`}
+              className='rounded-3xl'
+              width={0}
+              height={0}
+              priority={true}
+            />
           </div>
         ))}
       </Carousel>

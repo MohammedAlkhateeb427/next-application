@@ -5,7 +5,7 @@ import { useCart } from '../context/CartProvider';
 import Link from 'next/link';
 import Button from '../components/Button';
 import { BsFillTrashFill, BsFillCartFill } from 'react-icons/bs';
-
+import Image from 'next/image';
 const CartDropdown = () => {
   const [control, setControl] = useState({
     isCartOpen: false,
@@ -44,10 +44,14 @@ const CartDropdown = () => {
                       className='flex p-2 border-b border-gray-300'
                     >
                       <div className='mr-2 mt-1'>
-                        <img
+                        <Image
+                          unoptimized
                           src={product.image}
                           alt='Product Image'
                           className='w-6 h-6'
+                          width={0}
+                          height={0}
+                          priority={true}
                         />
                       </div>
                       <div className='flex-grow'>

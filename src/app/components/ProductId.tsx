@@ -4,7 +4,7 @@ import React from 'react';
 import Button from './Button';
 import { BsFillCartFill } from 'react-icons/bs';
 import { useCart } from '../context/CartProvider';
-import Link from 'next/link';
+import Image from 'next/image';
 
 type Props = {
   productId: any;
@@ -15,7 +15,11 @@ const ProductID = ({ productId }: Props) => {
   return (
     <>
       <div>
-        <img
+        <Image
+          unoptimized
+          width={0}
+          height={0}
+          priority={true}
           src={productId.image}
           alt={productId.title}
           className='w-full h-96 rounded-lg'
